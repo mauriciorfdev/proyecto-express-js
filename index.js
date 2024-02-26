@@ -5,6 +5,10 @@ const membersRoutes = require('./routes/api/members')
 
 const app = express()
 
+//Body Parser Middleware
+app.use(express.json());
+app.use(express.urlencoded({extended:false}))
+
 //Members API Routes
 app.use('/api/members', membersRoutes)
 
