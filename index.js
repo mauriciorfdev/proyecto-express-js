@@ -1,23 +1,12 @@
 const express = require('express')
 const path = require('path')
 const logger = require('./middleware/logger')
-const members = require('./members')
+const membersRoutes = require('./routes/api/members')
 
 const app = express()
 
-//Initialize it..., INIT MIDDLEWARE
-//app.use(logger)
-
-//Gets All Members
-app.get('/api/members', (req, res) => res.json(members))
-
-//Get Single User
-app.get('/api/members/:id', (req, res) => {
-        console.log(members.filter((member)=>{
-            return member.id==req.params.id
-        }));
-        res.end()
-})
+//Members API Routes
+app.use('/api/members', membersRoutes)
 
 const PORT = process.env.PORT || 5000;
 
